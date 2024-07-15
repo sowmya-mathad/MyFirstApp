@@ -1,0 +1,20 @@
+<div>
+    <h1>Navbar Component</h1>
+    <p>Dummy Paragraph</p>
+    <div>
+        <button (click)="buttonClick()">Submit</button>
+        <br />
+        <button (mouseover)="mouseOver()">MouseOver Button</button>
+        <br />
+        <input type="text" (keyup)="keyEnter($event)" />
+        <br />
+        <!-- One way data binding -->
+        <input type="text1" (keyup.enter)="keyFiltering(user)" #user id="userId" />
+        <br/>
+        <!-- two way data binding -->
+        <!-- <input type = "text2" [value]="userName" #username (keyup.enter)="updatedUserName(username)"/> -->
+        <input type= "text" [(ngModel)] = "userName" />
+        <h2>{{userName}}</h2>
+    </div>
+
+</div>

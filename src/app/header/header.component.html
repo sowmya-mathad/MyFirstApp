@@ -1,0 +1,16 @@
+<div>
+    <h1> header works!</h1>
+</div>
+<div>
+    <h2 *ngIf="isLoggedIn; else message" >{{userName}}</h2>
+    <h4 *ngIf="!isLoggedIn">User is not Logged In</h4>
+    <ng-template #message> 
+        <h4> User not Logged (from Ng template)</h4>
+    </ng-template>
+
+    @if(isLoggedIn){
+        <h3>{{userName}}</h3>
+    } @else {
+        <h4>User Logged Out</h4>
+    }
+</div>

@@ -1,0 +1,16 @@
+.active {
+    background-color: green;
+    border-color: yellow;
+    border-width: 5px;
+}
+.no-active {
+    background-color: red;
+    border-color: blue;
+    border-width: 5px;
+}
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }

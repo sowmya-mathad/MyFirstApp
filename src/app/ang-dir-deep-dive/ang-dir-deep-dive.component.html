@@ -1,0 +1,116 @@
+<div>
+    <h2>ang-dir-deep-dive works!</h2>
+    <div>
+        <h1> switch</h1>
+        <div [ngSwitch]="userRole">
+            <p *ngSwitchCase="'Admin'">Welcome Admin</p>
+            <p *ngSwitchCase="'Member'">Welcome Memeber</p>
+            <p *ngSwitchDefault>Please Login</p>
+        </div>
+        <div>
+            <h1> switch with syntax</h1>
+            @switch (userRole) {
+            @case ('Admin') {<p>Welcome Admin</p>}
+            @case('Member') { <p>Welcome Memeber</p>}
+            @default { <p>Please Login </p>}
+            }
+        </div>
+    </div>
+
+    <div>
+        <button (click)="addNewUser()">Add User</button>
+    </div>
+    <div *ngIf="userObj.length==0">
+        <p> No user to display</p>
+    </div>
+    <div>
+        <ul>
+            <li *ngFor="let user of users"> {{user}}</li>
+        </ul>
+        <ul>
+            @for (user of users; track user) {
+            <li>{{user}}</li>
+            }
+        </ul>
+        <ul>
+            <li *ngFor="let user of userObj; let i = index; let usercount=count"> {{usercount}} {{user.name}}
+                <button (click)="onDeleteByIndex(i)">Delete</button>
+            </li>
+        </ul>
+        <p> From ngFor syntax</p>
+        <ul>
+            @for(user of userObj; track user)
+            {
+            <li>{{userObj.length}} {{user.name}} <button (click)="onDelete(user)">Delete</button></li>
+            }
+        </ul>
+        <p> From ngFor syntax using index </p>
+        <ul>
+            @for(user of userObj; track user; let i =$index; let usercount = $count; let first = $first; let
+            last=$last; let even = $even; let odd=$odd)
+            {
+            <!-- <li>{{userObj.length}} {{user.id}} {{user.name}} <button (click)="onDeleteByIndex(i)">Delete</button></li> -->
+
+            <li>{{first}} -{{even}}- {{odd}} {{usercount}} {{i}} {{user.name}} - {{last}} <button
+                    (click)="onDeleteByIndex(i)">Delete</button></li>
+            }
+            @empty {
+            <p> No user to display - loaded from empty syntax</p>
+            }
+        </ul>
+    </div>
+    <div>
+        <p>{{users}}</p>
+        <h4>{{users[1]}}</h4>
+        <h4 *ngFor="let user of users">{{user}}</h4>
+        <p> for syntax block</p>
+        @for (user of users; track user) {
+        <h4>{{user}}</h4>
+        }
+    </div>
+    <div>
+        <h4 *ngIf="isAdmin">Welcome Admin</h4>
+        <h4 *ngIf="isMember">Welcome Member</h4>
+        <h4 *ngIf="isGuest">Welcome Guest</h4>
+
+        @if (isAdmin) {
+        <h4>Welcome Admin</h4>
+        }@else if (isGuest) {
+        <h4>Welcome Guest</h4>
+        }@else {
+        <h4>Welcome Member</h4>
+        }
+        <br />
+        <button (click)="countLoginAttempte()" *ngIf="loginCount<3">Login</button>
+        <br />
+        <label *ngIf="loginCount > 3"> Login count exceeded, Try again later</label>
+        <br />
+        <h4 *ngIf="userRole == 'Admin' else userMessage">Welcome Admin</h4>
+        <ng-template #userMessage>
+            <h4>Welcome Member</h4>
+        </ng-template>
+        <p> Using "&#64;"If</p>
+        @if (userRole == 'Admin') {
+        <h4>Welcome Admin "&#64;"ifElse</h4>
+        } @else {
+        <h4>Welcome Member from "&#64;"ifElse</h4>
+        }
+
+        <ng-template #callToAction>
+            <button>Join Now</button>
+        </ng-template>
+        <div>
+            <h2>ngTemplate usage</h2>
+            <div [ngTemplateOutlet]="callToAction">
+                <h3>Header</h3>
+                callToAction
+            </div>
+            <div [ngTemplateOutlet]="callToAction">
+                <h3>Hero</h3>
+            </div>
+            <div [ngTemplateOutlet]="callToAction">
+                <h3>Footer</h3>
+            </div>
+        </div>
+    </div>
+</div>

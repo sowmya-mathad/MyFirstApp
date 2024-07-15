@@ -1,0 +1,15 @@
+<p>attrb-dir works!</p>
+<div>
+    <h1 [style.color]="isLoggedIn?'green':'red'"
+        [style.textTransform]="isLoggedIn? 'uppercase' : 'lowercase'"> Welcome Admin</h1>
+
+    <h1 [ngStyle]="{'color':isLoggedIn ? 'green' : 'red',
+                    'textTransform' : isLoggedIn ? 'uppercase' : 'lowercase'}"> Ng style directive</h1>
+
+   <h2 [class.login]="isLoggedIn" [class.logout]="!isLoggedIn">Using class binding</h2>
+
+   <h1 [ngClass]="{
+                    'login': isLoggedIn,
+                    'logout': !isLoggedIn
+                }"> Ng Class directive</h1>
+</div>
